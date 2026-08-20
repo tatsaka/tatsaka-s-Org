@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Stock management collections
+    match /{document=**} {
+      allow read, write: if true; // Permissive for quick prototype and demo, can be scoped by request.auth
+    }
+  }
+}

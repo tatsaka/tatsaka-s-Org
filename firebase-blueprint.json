@@ -1,0 +1,146 @@
+{
+  "entities": {
+    "articles": {
+      "title": "Articles / Produits",
+      "description": "Catalogue des articles en stock",
+      "fields": {
+        "id": { "type": "string", "description": "ID unique du produit" },
+        "reference": { "type": "string", "description": "Référence interne ou SKU" },
+        "barcode": { "type": "string", "description": "Code barre EAN13/UPC" },
+        "name": { "type": "string", "description": "Désignation de l'article" },
+        "category": { "type": "string", "description": "Catégorie de produit" },
+        "quantity": { "type": "number", "description": "Quantité en stock disponible" },
+        "minQuantity": { "type": "number", "description": "Seuil d'alerte / Stock minimum" },
+        "idealQuantity": { "type": "number", "description": "Niveau de stock optimal" },
+        "purchasePrice": { "type": "number", "description": "Prix unitaire d'achat HT" },
+        "sellingPrice": { "type": "number", "description": "Prix unitaire de vente HT" },
+        "unit": { "type": "string", "description": "Unité de mesure" },
+        "location": { "type": "string", "description": "Emplacement en rayon" },
+        "supplier": { "type": "string", "description": "Fournisseur principal" },
+        "notes": { "type": "string", "description": "Remarques" },
+        "imageUrl": { "type": "string", "description": "Photo de l'article" },
+        "updatedAt": { "type": "string", "description": "Date de modification" },
+        "createdAt": { "type": "string", "description": "Date de création" }
+      }
+    },
+    "clients": {
+      "title": "Clients",
+      "description": "Répertoire des clients de l'entreprise",
+      "fields": {
+        "id": { "type": "string", "description": "ID client unique" },
+        "name": { "type": "string", "description": "Nom complet ou raison sociale" },
+        "company": { "type": "string", "description": "Nom de l'entreprise" },
+        "phone": { "type": "string", "description": "Numéro de téléphone" },
+        "email": { "type": "string", "description": "Adresse email" },
+        "address": { "type": "string", "description": "Adresse postale" },
+        "city": { "type": "string", "description": "Ville" },
+        "taxNumber": { "type": "string", "description": "Identifiant fiscal / ICE" },
+        "totalPurchases": { "type": "number", "description": "Cumul total des achats" },
+        "totalPaid": { "type": "number", "description": "Cumul total réglé" },
+        "balanceDue": { "type": "number", "description": "Solde restant dû" },
+        "notes": { "type": "string", "description": "Notes commerciales" },
+        "createdAt": { "type": "string", "description": "Date d'enregistrement" }
+      }
+    },
+    "sales": {
+      "title": "Commandes & Factures Clients",
+      "description": "Ventes et bons de livraison clients",
+      "fields": {
+        "id": { "type": "string", "description": "ID facture / commande" },
+        "orderNumber": { "type": "string", "description": "Numéro de facture" },
+        "clientId": { "type": "string", "description": "ID client" },
+        "clientName": { "type": "string", "description": "Nom du client" },
+        "clientPhone": { "type": "string", "description": "Téléphone client" },
+        "items": { "type": "array", "description": "Articles vendus" },
+        "subtotal": { "type": "number", "description": "Sous-total HT" },
+        "taxRate": { "type": "number", "description": "Taux TVA" },
+        "taxAmount": { "type": "number", "description": "Montant TVA" },
+        "totalAmount": { "type": "number", "description": "Total TTC" },
+        "costTotal": { "type": "number", "description": "Coût total d'achat" },
+        "paidAmount": { "type": "number", "description": "Montant déjà réglé" },
+        "status": { "type": "string", "description": "brouillon, validee, livree, annulee" },
+        "paymentStatus": { "type": "string", "description": "impaye, partiel, paye" },
+        "date": { "type": "string", "description": "Date de la vente" },
+        "dueDate": { "type": "string", "description": "Date d'échéance" },
+        "notes": { "type": "string", "description": "Remarques" },
+        "createdBy": { "type": "string", "description": "Vendeur / Opérateur" }
+      }
+    },
+    "payments": {
+      "title": "Règlements & Encaissements",
+      "description": "Historique des paiements reçus des clients",
+      "fields": {
+        "id": { "type": "string", "description": "ID unique du règlement" },
+        "invoiceId": { "type": "string", "description": "ID de la facture associée" },
+        "orderNumber": { "type": "string", "description": "Numéro de facture" },
+        "clientId": { "type": "string", "description": "ID client" },
+        "clientName": { "type": "string", "description": "Nom client" },
+        "amount": { "type": "number", "description": "Montant encaissé" },
+        "paymentDate": { "type": "string", "description": "Date de règlement" },
+        "method": { "type": "string", "description": "especes, virement, cheque, carte" },
+        "reference": { "type": "string", "description": "Référence transaction" },
+        "notes": { "type": "string", "description": "Notes de caisse" },
+        "receivedBy": { "type": "string", "description": "Opérateur ayant encaissé" }
+      }
+    },
+    "users": {
+      "title": "Utilisateurs & Droits RBAC",
+      "description": "Comptes utilisateurs et profils de sécurité",
+      "fields": {
+        "id": { "type": "string", "description": "ID utilisateur" },
+        "name": { "type": "string", "description": "Nom complet" },
+        "email": { "type": "string", "description": "Adresse email" },
+        "role": { "type": "string", "description": "admin, manager, vendeur, magasinier, comptable" },
+        "phone": { "type": "string", "description": "Numéro de téléphone" },
+        "permissions": { "type": "object", "description": "Matrice des droits et accès" },
+        "isActive": { "type": "boolean", "description": "Statut du compte" },
+        "avatarColor": { "type": "string", "description": "Couleur d'avatar" },
+        "lastLogin": { "type": "string", "description": "Dernière connexion" }
+      }
+    },
+    "movements": {
+      "title": "Mouvements de stock",
+      "description": "Historique des entrées, sorties, ajustements et transferts",
+      "fields": {
+        "id": { "type": "string", "description": "ID unique du mouvement" },
+        "articleId": { "type": "string", "description": "ID de l'article concerné" },
+        "articleName": { "type": "string", "description": "Nom de l'article" },
+        "reference": { "type": "string", "description": "Référence de l'article" },
+        "type": { "type": "string", "description": "Type: entree, sortie, ajustement, transfert, retour" },
+        "quantity": { "type": "number", "description": "Quantité mouvementée" },
+        "previousQuantity": { "type": "number", "description": "Stock avant mouvement" },
+        "newQuantity": { "type": "number", "description": "Stock après mouvement" },
+        "reason": { "type": "string", "description": "Motif ou bon de livraison / commande" },
+        "performedBy": { "type": "string", "description": "Utilisateur ayant effectué le mouvement" },
+        "timestamp": { "type": "string", "description": "Horodatage ISO" }
+      }
+    },
+    "suppliers": {
+      "title": "Fournisseurs",
+      "description": "Liste des partenaires fournisseurs",
+      "fields": {
+        "id": { "type": "string", "description": "ID unique" },
+        "name": { "type": "string", "description": "Nom de l'entreprise" },
+        "contactName": { "type": "string", "description": "Nom du contact" },
+        "email": { "type": "string", "description": "Email" },
+        "phone": { "type": "string", "description": "Téléphone" },
+        "address": { "type": "string", "description": "Adresse" },
+        "deliveryLeadDays": { "type": "number", "description": "Délai moyen de livraison en jours" }
+      }
+    },
+    "orders": {
+      "title": "Commandes Fournisseurs",
+      "description": "Bons de commande de réapprovisionnement",
+      "fields": {
+        "id": { "type": "string", "description": "Numéro de bon de commande" },
+        "supplierId": { "type": "string", "description": "Fournisseur" },
+        "supplierName": { "type": "string", "description": "Nom du fournisseur" },
+        "items": { "type": "array", "description": "Articles commandés" },
+        "totalAmount": { "type": "number", "description": "Montant total HT" },
+        "status": { "type": "string", "description": "brouillon, commandé, reçu_partiel, reçu, annulé" },
+        "createdAt": { "type": "string", "description": "Date de création" },
+        "expectedDelivery": { "type": "string", "description": "Date prévue" }
+      }
+    }
+  }
+}

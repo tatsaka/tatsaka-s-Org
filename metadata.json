@@ -1,0 +1,6 @@
+{
+  "name": "Gestion des Stocks",
+  "description": "Système ERP complet de gestion des stocks, CRM clients, facturation des ventes, encaissements, valorisation financière et contrôle d'accès basé sur les rôles (RBAC) avec assistant IA Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
